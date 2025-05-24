@@ -14,10 +14,10 @@ def load_data():
     return master_df, di34_df
 
 def detect_fraud(comment):
-    comment = comment.lower()
     keywords2 = ['deposit']
     if pd.isna(comment) or comment.strip() == "" or any(k in comment for k in keywords2):
         return "Suspicious"
+    comment = comment.lower()
     keywords = ['unauthorized', 'dispute', 'fraud', 'not recognized', 'lost', 'stolen', 'overdrawn', 'provisional credit']
     if any(k in comment for k in keywords):
         return "Fraudulent"
